@@ -8,12 +8,12 @@ export default function Footer() {
                     <p className="flex items-center justify-center gap-1">
                         © 2025. Built with <Heart className="h-4 w-4 fill-destructive text-destructive" /> using{' '}
                         <a
-                            href="https://caffeine.ai"
+                            href="https://github.com/OsuwoJr"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-medium text-primary hover:underline"
                         >
-                            caffeine.ai
+                            OsuwoJr
                         </a>
                     </p>
                 </div>
