@@ -36,23 +36,23 @@ export default function Header() {
     };
 
     const getRoleBadge = (role: AppRole) => {
-        const badges: Record<AppRole, string> = {
-            [AppRole.artist]: '🎨',
-            [AppRole.buyer]: '🛍️',
-            [AppRole.hub]: '📦',
-            [AppRole.admin]: '👑',
+        const badges: Record<string, string> = {
+            artist: '🎨',
+            buyer: '🛍️',
+            hub: '📦',
+            admin: '👑',
         };
-        return badges[role] || '';
+        return badges[role._tag] || '';
     };
 
     const getRoleLabel = (role: AppRole) => {
-        const labels: Record<AppRole, string> = {
-            [AppRole.artist]: 'ARTIST',
-            [AppRole.buyer]: 'BUYER',
-            [AppRole.hub]: 'HUB',
-            [AppRole.admin]: 'ADMIN',
+        const labels: Record<string, string> = {
+            artist: 'ARTIST',
+            buyer: 'BUYER',
+            hub: 'HUB',
+            admin: 'ADMIN',
         };
-        return labels[role] || '';
+        return labels[role._tag] || '';
     };
 
     return (

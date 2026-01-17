@@ -36,7 +36,7 @@ export default function ProfileSetup() {
             });
 
             // If user selected hub role, show hub application form after profile is saved
-            if (appRole === AppRole.hub) {
+            if (appRole._tag === 'hub') {
                 setProfileSaved(true);
                 setShowHubApplication(true);
                 toast.success('Profile created! Please complete your hub application.');
@@ -88,9 +88,12 @@ export default function ProfileSetup() {
 
                         <div className="space-y-3">
                             <Label>I am a...</Label>
-                            <RadioGroup value={appRole} onValueChange={(value) => setAppRole(value as AppRole)}>
+                            <RadioGroup 
+                                value={appRole._tag} 
+                                onValueChange={(value) => setAppRole(AppRole[value as keyof typeof AppRole])}
+                            >
                                 <div className="flex items-center space-x-2 rounded-lg border border-border p-3 transition-colors hover:bg-accent">
-                                    <RadioGroupItem value={AppRole.buyer} id="buyer" />
+                                    <RadioGroupItem value="buyer" id="buyer" />
                                     <Label htmlFor="buyer" className="flex-1 cursor-pointer">
                                         <div className="flex items-center gap-2">
                                             <span className="text-xl">🛍️</span>
@@ -105,7 +108,7 @@ export default function ProfileSetup() {
                                 </div>
 
                                 <div className="flex items-center space-x-2 rounded-lg border border-border p-3 transition-colors hover:bg-accent">
-                                    <RadioGroupItem value={AppRole.artist} id="artist" />
+                                    <RadioGroupItem value="artist" id="artist" />
                                     <Label htmlFor="artist" className="flex-1 cursor-pointer">
                                         <div className="flex items-center gap-2">
                                             <span className="text-xl">🎨</span>
@@ -120,7 +123,7 @@ export default function ProfileSetup() {
                                 </div>
 
                                 <div className="flex items-center space-x-2 rounded-lg border border-border p-3 transition-colors hover:bg-accent">
-                                    <RadioGroupItem value={AppRole.hub} id="hub" />
+                                    <RadioGroupItem value="hub" id="hub" />
                                     <Label htmlFor="hub" className="flex-1 cursor-pointer">
                                         <div className="flex items-center gap-2">
                                             <span className="text-xl">📦</span>
@@ -135,7 +138,7 @@ export default function ProfileSetup() {
                                 </div>
 
                                 <div className="flex items-center space-x-2 rounded-lg border border-border p-3 transition-colors hover:bg-accent">
-                                    <RadioGroupItem value={AppRole.admin} id="admin" />
+                                    <RadioGroupItem value="admin" id="admin" />
                                     <Label htmlFor="admin" className="flex-1 cursor-pointer">
                                         <div className="flex items-center gap-2">
                                             <span className="text-xl">👑</span>
@@ -158,7 +161,7 @@ export default function ProfileSetup() {
                                     Creating Profile...
                                 </>
                             ) : (
-                                appRole === AppRole.hub ? 'Continue to Hub Application' : 'Create Profile'
+                                appRole._tag === 'hub' ? 'Continue to Hub Application' : 'Create Profile'
                             )}
                         </Button>
                     </form>

@@ -11,14 +11,14 @@ interface DashboardProps {
 export default function Dashboard({ userProfile }: DashboardProps) {
     const role = userProfile.appRole;
 
-    switch (role) {
-        case AppRole.artist:
+    switch (role._tag) {
+        case 'artist':
             return <ArtistDashboard userProfile={userProfile} />;
-        case AppRole.buyer:
+        case 'buyer':
             return <BuyerDashboard userProfile={userProfile} />;
-        case AppRole.hub:
+        case 'hub':
             return <HubDashboard userProfile={userProfile} />;
-        case AppRole.admin:
+        case 'admin':
             return <AdminDashboard userProfile={userProfile} />;
         default:
             return <div>Unknown role</div>;
